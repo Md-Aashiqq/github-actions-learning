@@ -5,13 +5,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
   
     steps:
     - uses: actions/checkout@v3
     - run: docker build . -t iammac/nest-app
-    - run: echo "${{secrets.DOCKERHUB_PASSWORD}}" | docker login -u "${{secrets.DOCKERHUB_USERNAME}}" password-stdin
+    - run: echo "${{secerts.DOCKERHUB_PASSWORD}}" | docker login -u "${{secerts.DOCKERHUB_USERNAME}}" password-stdin
     - run: docker push iammac/nest-app
     
   
